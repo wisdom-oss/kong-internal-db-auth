@@ -65,15 +65,9 @@ function plugin:new_auth_request(host, port, path, token)
         return nil
     end
 
-    local hostname = host
-    if port ~= 80 and port ~= 443 then
-        hostname = hostname .. ":" .. tostring(port)
-    end
-
     local headers = {
         charset = "utf-8",
         ["content-type"] = "application/x-www-form-urlencoded; charset=utf-8",
-        ["Host"] = hostname,
         ["Authorization"] = "Bearer " .. token
     }
 
