@@ -1,12 +1,12 @@
 package = "wisdom-kong-internal-auth-plugin"
 
-version = "1.0.1-0"
+version = "1.0.1-1"
 
 supported_platforms = {"linux", "macosx"}
 
 source = {
   url = "git://github.com/wisdom-oss/kong-internal-db-auth",
-  tag = "1.0.1-0"
+  tag = "1.0.1-1"
 }
 
 description = {
@@ -21,8 +21,8 @@ dependencies = {
 build = {
   type = "builtin",
   modules = {
-    ["kong.plugins.wisdom-kong-internal-auth-plugin.access"] = "src/access.lua",
-    ["kong.plugins.wisdom-kong-internal-auth-plugin.handler"] = "src/handler.lua",
-    ["kong.plugins.wisdom-kong-internal-auth-plugin.schema"] = "src/schema.lua"
+    ["kong.plugins.wisdom-kong-internal-auth-plugin.access"] = "kong/plugins/wisdom-kong-internal-auth-plugin/access.lua",
+    ["kong.plugins.wisdom-kong-internal-auth-plugin.handler"] = "kong/plugins/wisdom-kong-internal-auth-plugin/handler.lua",
+    ["kong.plugins.wisdom-kong-internal-auth-plugin.schema"] = "kong/plugins/wisdom-kong-internal-auth-plugin/schema.lua"
   }
 }
