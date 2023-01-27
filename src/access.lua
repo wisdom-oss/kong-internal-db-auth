@@ -81,6 +81,12 @@ function _M.execute(conf)
             kong.service.request.set_header(name, response_json[name])
         end
     end
+    if not response_json['scope'] then
+        return kong.response.exit(401, { message = "Unauthorized" })
+    else
+        kong.service.request.set_header("X-Authenticated-Scope", response_json['scope']:gsub(" ", ","))
+    
+
 end
 
 function _M.get_token()
