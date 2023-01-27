@@ -13,14 +13,14 @@ return {
             config = {
                 type = "record",
                 fields = {
-                    intospection_url = {
+                    {intospection_url = {
                         type = "string",
                         required = true
-                    },
-                    auth_header = {
+                    }},
+                    {auth_header = {
                         type = "string",
                         required = true
-                    }
+                    }}
                 }
             }
         }
