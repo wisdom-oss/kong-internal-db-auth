@@ -54,7 +54,9 @@ function plugin:access(plugin_conf)
     if not response_json['scope'] then
         return kong.response.exit(401, [[{"httpCode": 401, "httpError": "Unauthorized", "error": "api-gateway.UNAUTHORIZED", "errorName": "Unauthorized", "errorDescription": "The bearer token set in the request is not valid"}]])
     else
-        kong.service.request.set_header("X-Authenticated-Scope", response_json['scope']:gsub(" ", ","))
+        local scopes = response_json['scope']:gsub(" ", ",")
+        kong.log.err(scopes)
+        kong.service.request.set_header("X-Authenticated-Scope", scopes)
     end
 end
 
