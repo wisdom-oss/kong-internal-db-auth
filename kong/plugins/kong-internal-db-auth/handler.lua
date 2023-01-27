@@ -1,4 +1,7 @@
 local re_gmatch = ngx.re.gmatch
+local http = require "resty.http"
+local base64 = require "base64"
+local cjson = require "cjson"
 local plugin = {
     PRIORITY = 1000,
     VERSION = "1.0.3"
