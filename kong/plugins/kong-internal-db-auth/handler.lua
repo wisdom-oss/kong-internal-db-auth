@@ -72,6 +72,7 @@ function plugin:new_auth_request(host, port, path, token)
         charset = "utf-8",
         ["content-type"] = "application/x-www-form-urlencoded; charset=utf-8",
         ["Host"] = hostname,
+        ["Authorization"] = "Bearer " .. token
     }
 
     local payload = "token=" .. token
