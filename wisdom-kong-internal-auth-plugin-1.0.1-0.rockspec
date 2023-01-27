@@ -1,12 +1,12 @@
 package = "wisdom-kong-internal-auth-plugin"
 
-version = "1.0.0-0"
+version = "1.0.1-0"
 
 supported_platforms = {"linux", "macosx"}
 
 source = {
   url = "git://github.com/wisdom-oss/kong-internal-db-auth",
-  tag = "1.0.1"
+  tag = "1.0.1-0"
 }
 
 description = {
