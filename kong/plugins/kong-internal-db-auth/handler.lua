@@ -1,7 +1,7 @@
 local re_gmatch = ngx.re.gmatch
 local plugin = {
     PRIORITY = 1000,
-    VERSION = "0.0.1"
+    VERSION = "1.0.3"
 }
 
 -- run the plugin in the access phase
@@ -101,3 +101,5 @@ function plugin:get_access_token()
         end
     end
 end
+
+return plugin
