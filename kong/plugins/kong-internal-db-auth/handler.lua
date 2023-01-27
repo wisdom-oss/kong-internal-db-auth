@@ -18,7 +18,7 @@ function plugin:access(plugin_conf)
     local httpc = http.new()
     httpc:set_timeout(10000)
     httpc:connect(host, port)    
-    if schema == "https" then
+    if scheme == "https" then
         ok, err = httpc:ssl_handshake()
         if not ok then
             kong.log.err(err)
