@@ -6,7 +6,7 @@ supported_platforms = {"linux", "macosx"}
 
 source = {
   url = "https://github.com/wisdom-oss/kong-internal-db-auth.git",
-  tag = "0.1.0-0"
+  tag = "1.0.0"
 }
 
 description = {
