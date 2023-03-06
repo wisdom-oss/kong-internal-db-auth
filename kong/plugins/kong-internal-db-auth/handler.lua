@@ -47,16 +47,12 @@ function plugin:access(plugin_conf)
         return kong.response.exit(500, [[{"httpCode": 500, "httpError": "Internal Server Error", "error": "api-gateway.INTERNAL_ERROR", "errorName": "Internal Error", "errorDescription": "No Response received"}]])
     end
 
-    if not response_json['active'] then
-        return kong.response.exit(401, [[{"httpCode": 401, "httpError": "Unauthorized", "error": "api-gateway.UNAUTHORIZED", "errorName": "Unauthorized", "errorDescription": "The bearer token set in the request is not valid"}]])
-    end
-
-    if not response_json['scope'] then
+    if not response_json['groups'] then
         return kong.response.exit(401, [[{"httpCode": 401, "httpError": "Unauthorized", "error": "api-gateway.UNAUTHORIZED", "errorName": "Unauthorized", "errorDescription": "The bearer token set in the request is not valid"}]])
     else
-        local scopes = response_json['scope']:gsub(" ", ",")
-        kong.log.err(scopes)
-        kong.service.request.set_header("X-Authenticated-Scope", scopes)
+        local groups = response_json['groups']
+        kong.log.err(groups)
+        kong.service.request.set_header("X-Authenticated-Groups", groups)
     end
 end
 
@@ -71,13 +67,10 @@ function plugin:new_auth_request(host, port, path, token)
         ["Authorization"] = "Bearer " .. token
     }
 
-    local payload = "token=" .. token
-
     return {
-        method = "POST",
+        method = "GET",
         path = path,
         headers = headers,
-        body = payload,
         keepalive_timeout = 10000
     }
 end
